@@ -11,9 +11,7 @@
 <body>
     <?php
     $pesquisa = $_POST['busca'] ?? '';
-
     include "conexao.php";
-
     $sql = "SELECT * FROM usuario where nome LIKE '%$pesquisa%' ";
     $dados = mysqli_query($conexao, $sql);
     ?>
@@ -31,7 +29,6 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">id</th>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Endereço</th>
                                 <th scope="col">Telefone</th>
@@ -41,7 +38,30 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                             while ($linha = mysqli_fetch_assoc ($dados)) {
+                             $nome = $linha['nome'];
+                             $endereco = $linha['endereco'];
+                             $telefone = $linha['telefone'];
+                             $data = $linha['data'];
+                             $email = $linha['email'];
 
+                             echo "<tr>
+
+                             <td>$nome</td>
+                             <td>$endereco</td>
+                             <td>$telefone</td>
+                             <td>$data</td>
+                             <td>$email</td>
+                             <td width=150px>
+                               <a href='#' class='btn btn-success btn-sm'>Editar</a>
+                               <a href='#' class='btn btn-danger btn-sm'>Excluir</a>
+                               </td>
+
+                             </tr>";
+
+                             }
+                            ?>
                         </tbody>
                     </table>
             </div>
