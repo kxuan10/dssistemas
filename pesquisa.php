@@ -44,6 +44,7 @@
                              $endereco = $linha['endereco'];
                              $telefone = $linha['telefone'];
                              $data = $linha['data'];
+                             $data = mostra_data("$data");
                              $email = $linha['email'];
 
                              echo "<tr>
